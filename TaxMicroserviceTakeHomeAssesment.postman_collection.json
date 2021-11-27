@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "d5b13650-8b09-4427-80f4-f5bce6b4367b",
+		"name": "TaxMicroserviceTakeHomeAssesment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:{port}/tax/rate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/tax/rate?zip=75071",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"tax",
+						"rate"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "USas",
+							"disabled": true
+						},
+						{
+							"key": "zip",
+							"value": "75071"
+						},
+						{
+							"key": "state",
+							"value": "fgd",
+							"disabled": true
+						},
+						{
+							"key": "city",
+							"value": "McKinney",
+							"disabled": true
+						},
+						{
+							"key": "street",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:{{port}}/tax/order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromCountry\": \"US\",\r\n    \"fromZip\": \"92093\",\r\n    \"fromState\": \"CA\",\r\n    \"fromCity\": \"La Jolla\",\r\n    \"fromStreet\": \"9500 Gilman Drive\",\r\n    \"toCountry\": \"US\",\r\n    \"toZip\": \"90002\",\r\n    \"toState\": \"CA\",\r\n    \"toCity\": \"Los Angeles\",\r\n    \"toStreet\": \"1335 E 103rd St\",\r\n    \"amount\": 15,\r\n    \"shippingAmmount\": 1.5,\r\n    \"nexusAddresses\": [\r\n        {\r\n            \"id\": \"Main Location\",\r\n            \"country\": \"US\",\r\n            \"zip\": \"92093\",\r\n            \"state\": \"CA\",\r\n            \"city\": \"La Jolla\",\r\n            \"street\": \"9500 Gilman Drive\"\r\n        }\r\n    ],\r\n    \"lineItems\": [\r\n        {\r\n            \"id\": \"1\",\r\n            \"quantity\": 1,\r\n            \"productTaxCode\": \"20010\",\r\n            \"unitPrice\": 15,\r\n            \"discount\": 0\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/tax/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"tax",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "20994"
+		}
+	]
+}
